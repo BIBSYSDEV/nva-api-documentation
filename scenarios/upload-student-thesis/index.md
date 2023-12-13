@@ -51,7 +51,7 @@ The publication context must indicate that this is a "Degree" context, the remai
 
 **isbnList**: Values for ISBN for the electronic, paperback and hardback (and potentially other) editions.
 
-Example:
+Example with a verified series from the Channel Register delivered by HKDIR:
 ```json
 {
   "entityDescription": {
@@ -60,9 +60,35 @@ Example:
       "publicationContext": {
         "type": "Degree",
         "publisher": {},
-        "series": {},
-        "seriesNumber": "",
-        "isbnList": []
+        "series": {
+          "type": "Series",
+          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
+        },
+        "seriesNumber": "10",
+        "isbnList": ["0-4345-6058-8"]
+      }
+    }
+  }
+}
+```
+
+Example with an unconfirmed series:
+```json
+{
+  "entityDescription": {
+    "reference": {
+      "type": "Reference",
+      "publicationContext": {
+        "type": "Degree",
+        "publisher": {},
+        "series": {
+          "type": "UnconfirmedSeries",
+          "title": "My unconfirmed series",
+          "issn": "1144-875X",
+          "onlineIssn": "2307-7301"
+        },
+        "seriesNumber": "10",
+        "isbnList": ["0-4345-6058-8"]
       }
     }
   }
