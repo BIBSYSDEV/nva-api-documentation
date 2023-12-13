@@ -44,7 +44,6 @@ See [file upload](../file-upload/index.md)
 The publication context must indicate that this is a degree context:
 ```json
 {
-  ...
   "entityDescription": {
     "reference": {
       "type": "Reference",
@@ -55,10 +54,8 @@ The publication context must indicate that this is a degree context:
         "seriesNumber": "",
         "isbnList": []
       }
-    },
-    ...
+    }
   }
-  ...
 }
 ```
 
@@ -74,10 +71,10 @@ Example:
   "type": "MonographPages",
   "introduction": {
     "type": "Range",
-    "begin": "10",
-    "end": "20"
+    "begin": "i",
+    "end": "vi"
   },
-  "pages": "10-20",
+  "pages": "157",
   "illustrated": true
 }
 ```
@@ -96,85 +93,128 @@ Example:
 ### Bachelor degree thesis
 ```json
 {
-  ...
   "entityDescription": {
     "reference": {
       "type": "Reference",
       "publicationContext": {
-        "type": "Degree",
-        ...
+        "type": "Degree"
       },
       "publicationInstance": {
         "type": "DegreeBachelor",
-        "pages": {},
-        "submittedDate": {}
-      },
-      ...
+        "pages": {
+          "type": "MonographPages",
+          "introduction": {
+            "type": "Range",
+            "begin": "i",
+            "end": "vi"
+          },
+          "pages": "157",
+          "illustrated": true
+        },
+        "submittedDate": {
+          "type": "PublicationDate",
+          "year": "2023",
+          "month": "01",
+          "day": "31"
+        }
+      }
     }
   }
-  ...
 }
 ```
 ### Master degree thesis
 ```json
 {
-  ...
   "entityDescription": {
     "reference": {
       "type": "Reference",
       "publicationContext": {
-        "type": "Degree",
-        ...
+        "type": "Degree"
       },
       "publicationInstance": {
         "type": "DegreeMaster",
-        "pages": {},
-        "submittedDate": {}
+        "pages": {
+          "type": "MonographPages",
+          "introduction": {
+            "type": "Range",
+            "begin": "i",
+            "end": "vi"
+          },
+          "pages": "157",
+          "illustrated": true
+        },
+        "submittedDate": {
+          "type": "PublicationDate",
+          "year": "2023",
+          "month": "01",
+          "day": "31"
+        }
       }
     }
   }
-  ...
 }
 ```
 ### PhD degree thesis
 ```json
 {
-  ...
   "entityDescription": {
     "reference": {
       "type": "Reference",
       "publicationContext": {
-        "type": "Degree",
-        ...
+        "type": "Degree"
       },
       "publicationInstance": {
         "type": "DegreePhd",
-        "pages": {},
-        "submittedDate": {}
+        "pages": {
+          "type": "MonographPages",
+          "introduction": {
+            "type": "Range",
+            "begin": "i",
+            "end": "vi"
+          },
+          "pages": "157",
+          "illustrated": true
+        },
+        "submittedDate": {
+          "type": "PublicationDate",
+          "year": "2023",
+          "month": "01",
+          "day": "31"
+        }
       }
     }
   }
-  ...
 }
 ```
 ### Licentiate degree thesis
 ```json
 {
-  ...
   "entityDescription": {
     "reference": {
       "type": "Reference",
       "publicationContext": {
-        "type": "Degree",
-        ...
+        "type": "Degree"
       },
       "publicationInstance": {
         "type": "DegreeLicentiate",
-        "pages": {},
-        "submittedDate": {}
+        "pages": {
+          "type": "MonographPages",
+          "introduction": {
+            "type": "Range",
+            "begin": "i",
+            "end": "vi"
+          },
+          "pages": "157",
+          "illustrated": true
+        },
+        "submittedDate": {
+          "type": "PublicationDate",
+          "year": "2023",
+          "month": "01",
+          "day": "31"
+        }
       }
     }
   }
-  ...
 }
 ```
