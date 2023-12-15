@@ -3,31 +3,48 @@
 ## Upload files
 See [file upload](../file-upload/index.md)
 
-## Common data
+## Describing the thesis (entity description)
+The metadata about the actually published work is contained within the `entityDescription` field. The important fields are:
+* `language`
+* `mainTitle`
+* `alternativeTitles`
+* `mainLanguageAbstract`
+* `alternativeAbstracts`
+* `contributors`
+* `publicationDate`
+
 ```json
 {
   "entityDescription": {
-    "mainTitle": "The title of the bachelor degree thesis",
+    "language": "http://lexvo.org/id/iso639-3/eng",
+    "mainTitle": "The title of the bachelor thesis",
     "alternativeTitles": {
-      "nb": "Tittelen til bachelor grad oppgaven"
+      "nb": "Tittelen til bachelor oppgaven, på norsk nokmål"
     },
-    "language": "en",
+    "mainLanguageAbstract": "The abstract of the bachelor thesis",
+    "alternativeAbstracts": {
+      "nb": "Sammendraget av bacheloroppgaven, på norsk bokmål"
+    }
+  }
+}
+```
+
+The `publicationDate` is the date when the thesis was made officially available. Year is required, month and day is optional. You can optionally provide titles and abstracts in different languages than the main language:
+```json
+{
+  "entityDescription": {
+    "contributors": [{
+    }],
     "publicationDate": {
       "year": "2023",
       "month": "01",
       "day": "01"
     },
-    "contributors": [{
-      
-    }],
-    "mainLanguageAbstract": "",
-    "alternativeAbstracts": {
-      
-    },
     "npiSubjectHeading": "",
     "tags": [],
     "description": "",
     "metadataSource": ""
+
   },
   "associatedArtifacts": [],
   "projects": [],
@@ -37,8 +54,14 @@ See [file upload](../file-upload/index.md)
   "rightsHolder": "",
   "status": "PUBLISHED",
   "publicationNotes": []
+
 }
 ```
+
+### Contributors
+The students that actually authored the thesis should be added with role `Creator`, while supervisors are added with role`Supervisor`.
+
+See [Adding contributors](../create-publication/contributors.md) for more details on adding contributors.
 
 ## Publication context
 The publication context must indicate that this is a "Degree" context, the remaining fields are filled according to current practice at the institution. 
@@ -65,7 +88,16 @@ Example with a verified series from the Channel Register delivered by HKDIR:
           "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
         },
         "seriesNumber": "10",
-        "isbnList": ["0-4345-6058-8"]
+        "isbnList": ["0-4345-6058-8"],
+        "course": {
+          "type": "UnconfirmedCourse",
+          "code": "MAT100"
+        },
+        "additionalIdentifiers": [{
+          "type": "AdditionalIdentifier",
+          "sourceName": "ISBN",
+          "value": "0-4345-6058-8"
+        }]
       }
     }
   }
@@ -88,7 +120,16 @@ Example with an unconfirmed series:
           "onlineIssn": "2307-7301"
         },
         "seriesNumber": "10",
-        "isbnList": ["0-4345-6058-8"]
+        "isbnList": ["0-4345-6058-8"],
+        "course": {
+          "type": "UnconfirmedCourse",
+          "code": "MAT100"
+        },
+        "additionalIdentifiers": [{
+          "type": "AdditionalIdentifier",
+          "sourceName": "ISBN",
+          "value": "0-4345-6058-8"
+        }]
       }
     }
   }
@@ -263,5 +304,137 @@ Example:
       }
     }
   }
+}
+```
+
+# Create the NVA record for the thesis
+```http request
+POST /publication HTTP/1.1
+Host: api.sandbox.nva.aws.unit.no
+Content-Type: application/json
+Authorization: Bearer ***
+
+{
+  "type": "Publication",
+  "status": "PUBLISHED",
+  "entityDescription": {
+    "type": "EntityDescription",
+    "mainTitle": "Eksempel på bacheloroppgave",
+    "alternativeTitles": {
+      "en": "Sample bachelor thesis"
+    },
+    "language": "http://lexvo.org/id/iso639-3/nob",
+    "date": {
+      "type": "PublicationDate",
+      "year": "2023",
+      "month": "08",
+      "day": "21"
+    },
+    "contributors": [
+      {
+        "type": "Contributor",
+        "identity": {
+          "type": "Identity",
+          "id": "https://api.sandbox.nva.aws.unit.no/cristin/person/538786",
+          "name": "Test, Test"
+        },
+        "affiliations": [
+          {
+            "type": "Organization",
+            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+          }
+        ],
+        "role": {
+          "type": "Supervisor"
+        }
+      },
+      {
+        "type": "Contributor",
+        "identity": {
+          "type": "Identity",
+          "name": "Medel-Svensson"
+        },
+        "affiliations": [
+          {
+            "type": "Organization",
+            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
+          }
+        ],
+        "role": {
+          "type": "Supervisor"
+        }
+      }
+    ],
+    "alternativeAbstracts": {
+      "en": "Abstract for sample bachelor degree thesis."
+    },
+    "reference": {
+      "type": "Reference",
+      "publicationContext": {
+        "type": "Degree",
+        "publisher": {
+          "type": "Publisher",
+          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/publisher/47A9D5D-EF68-4FDE-BD56-05733CD830FC/2023"
+        },
+        "series": {
+          "type": "Series",
+          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
+        },
+        "seriesNumber": "10",
+        "isbnList": ["0-4345-6058-8"],
+        "course": {
+          "type": "UnconfirmedCourse",
+          "code": "MAT100"
+        }
+      },
+      "publicationInstance": {
+        "type": "DegreeBachelor",
+        "submittedDate": {
+          "type": "PublicationDate",
+          "year": "2023",
+          "month": "02",
+          "day": "01"
+        }
+      }
+    },
+    "abstract": "Eksempel sammendrag for bachelorgrad-oppgave"
+  },
+  "additionalIdentifiers": [
+    {
+      "type": "AdditionalIdentifier",
+      "source": "inspera",
+      "value": "no.usn:wiseflow:6602739:50548407"
+    }
+  ],
+  "associatedArtifacts": [
+    {
+      "type": "PublishedFile",
+      "identifier": "49665499-8d8f-4b3c-9eef-28f7f0474715",
+      "name": "dev.nva:02.attachment 01.pdf",
+      "mimeType": "application/pdf",
+      "license": "http://rightsstatements.org/vocab/InC/1.0/"
+    },
+    {
+      "type": "PublishedFile",
+      "identifier": "852575ec-2776-4fc5-8255-6e2a1416ff6e",
+      "name": "dev.nva:02.attachment 02.pdf",
+      "mimeType": "application/pdf",
+      "license": "http://rightsstatements.org/vocab/InC/1.0/"
+    },
+    {
+      "type": "PublishedFile",
+      "identifier": "73afb9ec-5f0e-45e7-bf12-716e57690d61",
+      "name": "dev.nva:02.attachment 03.pdf",
+      "mimeType": "application/pdf",
+      "license": "http://rightsstatements.org/vocab/InC/1.0/"
+    },
+    {
+      "type": "PublishedFile",
+      "identifier": "831baeba-67bc-4ef9-92ff-7a8252701677",
+      "name": "nva_dev:test_file02.pdf",
+      "mimeType": "application/pdf",
+      "license": "http://rightsstatements.org/vocab/InC/1.0/"
+    }
+  ]
 }
 ```
