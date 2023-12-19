@@ -3,9 +3,12 @@
 Contributors refer to every person or group of persons that have contributed to something that will be stored and published in NVA.
 
 ## Contributors
+All publications have one or more contributors. A contributor is a person (or a group of persons) that have contributed somehow. Each contributor has an identity, one or more affiliations and a role
+in regard to the publication at hand. In addition, each contributor has a sequence number and a boolean flag indicating if it is a corresponding author.
 You should always strive to identify all the contributors. This has the benefit that the contributors would actually be credited for their contribution on their research profile in NVA automatically.
 
-To identify a contributor, you actually need to search for and find the `id` for the person by searching in the [Person API](https://swagger-ui-internal.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListPersons). An identified contributor is recognized by having `identifier.id` populated with a valid URI.
+To identify a contributor by `id`, you actually need to search for and find the `id` for the person by searching in the [Person API](https://swagger-ui-internal.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListPersons).
+An identified contributor is recognized by having `identifier.id` populated with a valid URI.
 
 ```json
 {
@@ -14,7 +17,6 @@ To identify a contributor, you actually need to search for and find the `id` for
     "type": "Identity",
     "id": "https://api.sandbox.nva.aws.unit.no/cristin/person/538786",
     "name": "Test, Test",
-    "nameType": "Organizational|Personal",
     "orcId": "http://orcid.org/0000-0001-5109-3700",
     "verificationStatus": "Verified|CannotBeEstablished|NotVerified",
     "additionalIdentifiers": [{
@@ -25,10 +27,7 @@ To identify a contributor, you actually need to search for and find the `id` for
   },
   "affiliations": [{
     "type": "Organization",
-    "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0",
-    "labels": {
-      "en": "My silly organization label"
-    }
+    "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
   }],
   "role": {
     "type": "Creator"
@@ -39,7 +38,16 @@ To identify a contributor, you actually need to search for and find the `id` for
 ```
 
 ## Affiliations
+The affiliations of contributors should always refer to existing organizational units found through the [Organization API](https://swagger-ui-internal.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListOrganizations).
 
+```json
+[
+  {
+    "type": "Organization",
+    "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+  }
+]
+```
 ## Roles
 The valid set of contributor roles are:
 * AcademicCoordinator

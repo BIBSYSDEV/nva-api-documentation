@@ -38,7 +38,6 @@ Now you can upload part to the presigned url received from *Prepare part(s)*. Th
 PUT /<path from response uri from prepare part>
 Host: <host from response uri from prepare part>
 Content-Type: application/pdf
-Content-Length: 22
 
 "<file contents here>"
 ```

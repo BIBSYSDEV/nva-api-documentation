@@ -29,12 +29,19 @@ The metadata about the actually published work is contained within the `entityDe
 }
 ```
 
-The `publicationDate` is the date when the thesis was made officially available. Year is required, month and day is optional. You can optionally provide titles and abstracts in different languages than the main language:
+The `publicationDate` is the date when the thesis was made officially available. Year is required, month and day is optional.
 ```json
 {
   "entityDescription": {
-    "contributors": [{
-    }],
+    "language": "http://lexvo.org/id/iso639-3/eng",
+    "mainTitle": "The title of the bachelor thesis",
+    "alternativeTitles": {
+      "nb": "Tittelen til bachelor oppgaven, på norsk nokmål"
+    },
+    "mainLanguageAbstract": "The abstract of the bachelor thesis",
+    "alternativeAbstracts": {
+      "nb": "Sammendraget av bacheloroppgaven, på norsk bokmål"
+    },
     "publicationDate": {
       "year": "2023",
       "month": "01",
@@ -44,7 +51,6 @@ The `publicationDate` is the date when the thesis was made officially available.
     "tags": [],
     "description": "",
     "metadataSource": ""
-
   },
   "associatedArtifacts": [],
   "projects": [],
@@ -54,13 +60,66 @@ The `publicationDate` is the date when the thesis was made officially available.
   "rightsHolder": "",
   "status": "PUBLISHED",
   "publicationNotes": []
-
 }
 ```
 
 ### Contributors
-The students that actually authored the thesis should be added with role `Creator`, while supervisors are added with role`Supervisor`.
+The students that actually authored the thesis should be added with role `Creator`, while supervisors should be added with role `Supervisor`.
 
+```json
+{
+  "entityDescription": {
+    "language": "http://lexvo.org/id/iso639-3/eng",
+    "mainTitle": "The title of the bachelor thesis",
+    "alternativeTitles": {
+      "nb": "Tittelen til bachelor oppgaven, på norsk nokmål"
+    },
+    "mainLanguageAbstract": "The abstract of the bachelor thesis",
+    "alternativeAbstracts": {
+      "nb": "Sammendraget av bacheloroppgaven, på norsk bokmål"
+    },
+    "publicationDate": {
+      "year": "2023",
+      "month": "01",
+      "day": "01"
+    },
+    "contributors": [
+      {
+        "type": "Contributor",
+        "identity": {
+          "type": "Identity",
+          "name": "Studentesen, Student"
+        },
+        "affiliations": [
+          {
+            "type": "Organization",
+            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+          }
+        ],
+        "role": {
+          "type": "Creator"
+        }
+      },
+      {
+        "type": "Contributor",
+        "identity": {
+          "type": "Identity",
+          "name": "Medel-Svensson"
+        },
+        "affiliations": [
+          {
+            "type": "Organization",
+            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
+          }
+        ],
+        "role": {
+          "type": "Supervisor"
+        }
+      }
+    ]
+  }
+}
+```
 See [Adding contributors](../create-publication/contributors.md) for more details on adding contributors.
 
 ## Publication context
@@ -307,6 +366,53 @@ Example:
 }
 ```
 
+## Associated artifacts and licences
+
+### An administrative agreement
+```json
+{
+  "type": "UnpublishableFile",
+  "identifier": "8dd58b7e-5a90-4cde-853b-adc3a4681abf",
+  "name":"thesis.pdf",
+  "mimeType": "application/pdf",
+  "size":"12356665",
+  "license": "http://rightsstatements.org/vocab/InC/1.0/",
+  "administrativeAgreement": true,
+  "embargoDate": "2023-01-01T00:00:00Z",
+  "rightsRetentionStrategy": {
+    "type": "NullRightsRetentionStrategy"
+  }
+}
+```
+
+### A published file
+```json
+{
+  "type": "PublishedFile",
+  "identifier": "8dd58b7e-5a90-4cde-853b-adc3a4681abf",
+  "name":"thesis.pdf",
+  "mimeType": "application/pdf",
+  "size":"12356665",
+  "license": "http://rightsstatements.org/vocab/InC/1.0/",
+  "administrativeAgreement": false,
+  "embargoDate": "2023-01-01T00:00:00Z",
+  "rightsRetentionStrategy": {
+    "type": "NullRightsRetentionStrategy"
+  },
+  "publishedDate": "2022-12-01T00:00:00Z"
+}
+```
+
+### Supported licences
+* https://creativecommons.org/licenses/by/4.0
+* https://creativecommons.org/licenses/by-nc/4.0
+* https://creativecommons.org/licenses/by-nc-nd/4.0
+* https://creativecommons.org/licenses/by-nc-sa/4.0
+* https://creativecommons.org/licenses/by-sa/4.0
+* https://creativecommons.org/licenses/by-nd/4.0
+* https://creativecommons.org/publicdomain/zero/1.0
+* http://rightsstatements.org/vocab/InC/1.0/
+
 # Create the NVA record for the thesis
 ```http request
 POST /publication HTTP/1.1
@@ -335,8 +441,7 @@ Authorization: Bearer ***
         "type": "Contributor",
         "identity": {
           "type": "Identity",
-          "id": "https://api.sandbox.nva.aws.unit.no/cristin/person/538786",
-          "name": "Test, Test"
+          "name": "Studentesen, Student"
         },
         "affiliations": [
           {
@@ -345,7 +450,7 @@ Authorization: Bearer ***
           }
         ],
         "role": {
-          "type": "Supervisor"
+          "type": "Creator"
         }
       },
       {
