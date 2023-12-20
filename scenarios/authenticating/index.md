@@ -30,7 +30,7 @@ In return, you will get a response like this:
 ```
 
 The access token above is valid for 900 seconds, after which you will have to get a new token to
-access the NVA API.
+keep accessing the API.
 
 Using this token in subsequent requests to the API is done by providing the following request
 header:

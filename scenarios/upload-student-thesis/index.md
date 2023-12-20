@@ -88,12 +88,12 @@ The students that actually authored the thesis should be added with role `Creato
         "type": "Contributor",
         "identity": {
           "type": "Identity",
-          "name": "Studentesen, Student"
+          "name": "Nordmann, Ola"
         },
         "affiliations": [
           {
             "type": "Organization",
-            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+            "id": "https://api.test.nva.aws.unit.no/cristin/organization/185.18.2.0"
           }
         ],
         "role": {
@@ -104,12 +104,12 @@ The students that actually authored the thesis should be added with role `Creato
         "type": "Contributor",
         "identity": {
           "type": "Identity",
-          "name": "Medel-Svensson"
+          "name": "Svensson, Medel"
         },
         "affiliations": [
           {
             "type": "Organization",
-            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
+            "id": "https://api.test.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
           }
         ],
         "role": {
@@ -144,7 +144,7 @@ Example with a verified series from the Channel Register delivered by HKDIR:
         "publisher": {},
         "series": {
           "type": "Series",
-          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
+          "id": "https://api.test.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
         },
         "seriesNumber": "10",
         "isbnList": ["0-4345-6058-8"],
@@ -416,7 +416,7 @@ Example:
 # Create the NVA record for the thesis
 ```http request
 POST /publication HTTP/1.1
-Host: api.sandbox.nva.aws.unit.no
+Host: api.test.nva.aws.unit.no
 Content-Type: application/json
 Authorization: Bearer ***
 
@@ -441,12 +441,12 @@ Authorization: Bearer ***
         "type": "Contributor",
         "identity": {
           "type": "Identity",
-          "name": "Studentesen, Student"
+          "name": "Nordmann, Ola"
         },
         "affiliations": [
           {
             "type": "Organization",
-            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+            "id": "https://api.test.nva.aws.unit.no/cristin/organization/185.18.2.0"
           }
         ],
         "role": {
@@ -457,12 +457,12 @@ Authorization: Bearer ***
         "type": "Contributor",
         "identity": {
           "type": "Identity",
-          "name": "Medel-Svensson"
+          "name": "Svensson, Medel"
         },
         "affiliations": [
           {
             "type": "Organization",
-            "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
+            "id": "https://api.test.nva.aws.unit.no/cristin/organization/10600000.0.0.0"
           }
         ],
         "role": {
@@ -479,11 +479,11 @@ Authorization: Bearer ***
         "type": "Degree",
         "publisher": {
           "type": "Publisher",
-          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/publisher/47A9D5D-EF68-4FDE-BD56-05733CD830FC/2023"
+          "id": "https://api.test.nva.aws.unit.no/publication-channels-v2/publisher/47A9D5D-EF68-4FDE-BD56-05733CD830FC/2023"
         },
         "series": {
           "type": "Series",
-          "id": "https://api.sandbox.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
+          "id": "https://api.test.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
         },
         "seriesNumber": "10",
         "isbnList": ["0-4345-6058-8"],
@@ -541,5 +541,335 @@ Authorization: Bearer ***
       "license": "http://rightsstatements.org/vocab/InC/1.0/"
     }
   ]
+}
+```
+
+The response will then be something like this:
+```json
+{
+    "type": "Publication",
+    "identifier": "018c86914d06-4419e8b0-2329-425d-821e-72b1eb669e0e",
+    "status": "PUBLISHED",
+    "resourceOwner": {
+        "owner": "api01@185.90.0.0",
+        "ownerAffiliation": "https://api.test.nva.aws.unit.no/cristin/organization/185.90.0.0"
+    },
+    "publisher": {
+        "type": "Organization",
+        "id": "https://api.test.nva.aws.unit.no/customer/5a823e16-38a3-4e5b-9436-d42ff514a99d",
+        "labels": {}
+    },
+    "createdDate": "2023-12-20T09:31:58.598623195Z",
+    "modifiedDate": "2023-12-20T09:31:58.598623195Z",
+    "entityDescription": {
+        "type": "EntityDescription",
+        "mainTitle": "Eksempel på bacheloroppgave",
+        "alternativeTitles": {
+            "en": "Sample bachelor thesis"
+        },
+        "language": "http://lexvo.org/id/iso639-3/nob",
+        "publicationDate": {
+            "type": "PublicationDate",
+            "year": "2023",
+            "month": "08",
+            "day": "21"
+        },
+        "contributors": [
+            {
+                "type": "Contributor",
+                "identity": {
+                    "type": "Identity",
+                    "name": "Nordmann, Ola",
+                    "additionalIdentifiers": []
+                },
+                "affiliations": [
+                    {
+                        "type": "Organization",
+                        "id": "https://api.test.nva.aws.unit.no/cristin/organization/185.18.2.0",
+                        "labels": {}
+                    }
+                ],
+                "role": {
+                    "type": "Creator"
+                },
+                "sequence": 1,
+                "correspondingAuthor": false
+            },
+            {
+                "type": "Contributor",
+                "identity": {
+                    "type": "Identity",
+                    "name": "Svensson, Medel",
+                    "additionalIdentifiers": []
+                },
+                "affiliations": [
+                    {
+                        "type": "Organization",
+                        "id": "https://api.test.nva.aws.unit.no/cristin/organization/10600000.0.0.0",
+                        "labels": {}
+                    }
+                ],
+                "role": {
+                    "type": "Supervisor"
+                },
+                "sequence": 2,
+                "correspondingAuthor": false
+            }
+        ],
+        "alternativeAbstracts": {
+            "en": "Abstract for sample bachelor degree thesis."
+        },
+        "tags": [],
+        "reference": {
+            "type": "Reference",
+            "publicationContext": {
+                "type": "Degree",
+                "series": {
+                    "type": "Series",
+                    "id": "https://api.test.nva.aws.unit.no/publication-channels-v2/series/6DA5EF2B-2DF5-4534-A2E5-E9E58C27324E/2023"
+                },
+                "seriesNumber": "10",
+                "publisher": {
+                    "type": "Publisher",
+                    "id": "https://api.test.nva.aws.unit.no/publication-channels-v2/publisher/47A9D5D-EF68-4FDE-BD56-05733CD830FC/2023",
+                    "valid": true
+                },
+                "isbnList": [
+                    "9780434560585"
+                ],
+                "course": {
+                    "type": "UnconfirmedCourse",
+                    "code": "MAT100"
+                },
+                "additionalIdentifiers": [
+                    {
+                        "type": "AdditionalIdentifier",
+                        "sourceName": "ISBN",
+                        "value": "0-4345-6058-8"
+                    }
+                ]
+            },
+            "publicationInstance": {
+                "type": "DegreeBachelor",
+                "submittedDate": {
+                    "type": "PublicationDate",
+                    "year": "2023",
+                    "month": "02",
+                    "day": "01"
+                }
+            }
+        },
+        "abstract": "Eksempel sammendrag for bachelorgrad-oppgave"
+    },
+    "projects": [],
+    "fundings": [],
+    "subjects": [],
+    "associatedArtifacts": [
+        {
+            "type": "PublishedFile",
+            "identifier": "59347ec1-57f8-4ab7-9bff-9a66ac9066af",
+            "name": "my-thesis.pdf",
+            "mimeType": "application/pdf",
+            "license": "http://rightsstatements.org/vocab/InC/1.0/",
+            "administrativeAgreement": false,
+            "publisherAuthority": false,
+            "rightsRetentionStrategy": {
+                "type": "NullRightsRetentionStrategy",
+                "followsPolicy": true
+            },
+            "visibleForNonOwner": true
+        }
+    ],
+    "additionalIdentifiers": [
+        {
+            "type": "AdditionalIdentifier",
+            "sourceName": "inspera",
+            "value": "no.usn:wiseflow:6602739:50548407"
+        }
+    ],
+    "@context": {
+        "@vocab": "https://nva.sikt.no/ontology/publication#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "id": "@id",
+        "type": "@type",
+        "affiliations": {
+            "@id": "affiliation",
+            "@container": "@set"
+        },
+        "activeFrom": {
+            "@type": "xsd:dateTime"
+        },
+        "activeTo": {
+            "@type": "xsd:dateTime"
+        },
+        "associatedArtifacts": {
+            "@id": "associatedArtifact",
+            "@container": "@set"
+        },
+        "additionalIdentifiers": {
+            "@id": "additionalIdentifier",
+            "@container": "@set"
+        },
+        "publicationNotes": {
+            "@id": "publicationNote",
+            "@container": "@set"
+        },
+        "alternativeTitles": {
+            "@id": "alternativeTitle",
+            "@container": "@language"
+        },
+        "approvals": {
+            "@id": "approval",
+            "@container": "@set"
+        },
+        "approvalStatus": {
+            "@type": "@vocab",
+            "@context": {
+                "@vocab": "https://nva.sikt.no/ontology/publication#"
+            }
+        },
+        "approvedBy": {
+            "@type": "@vocab",
+            "@context": {
+                "@vocab": "https://nva.sikt.no/ontology/approvals-body#"
+            }
+        },
+        "architectureOutput": {
+            "@id": "architectureOutput",
+            "@container": "@set"
+        },
+        "compliesWith": {
+            "@id": "compliesWith",
+            "@container": "@set"
+        },
+        "concertProgramme": {
+            "@id": "concertProgramme",
+            "@container": "@set"
+        },
+        "contributors": {
+            "@id": "contributor",
+            "@container": "@set"
+        },
+        "createdDate": {
+            "@type": "xsd:dateTime"
+        },
+        "date": {
+            "@type": "xsd:dateTime"
+        },
+        "doi": {
+            "@type": "@id"
+        },
+        "duplicateOf": {
+            "@type": "@id"
+        },
+        "embargoDate": {
+            "@type": "xsd:dateTime"
+        },
+        "from": {
+            "@type": "xsd:dateTime"
+        },
+        "handle": {
+            "@type": "@id"
+        },
+        "indexedDate": {
+            "@type": "xsd:dateTime"
+        },
+        "isbnList": {
+            "@id": "isbn",
+            "@container": "@set"
+        },
+        "labels": {
+            "@id": "label",
+            "@container": "@language"
+        },
+        "language": {
+            "@type": "@id"
+        },
+        "link": {
+            "@type": "@id"
+        },
+        "manifestations": {
+            "@id": "manifestation",
+            "@container": "@set"
+        },
+        "metadataSource": {
+            "@type": "@id"
+        },
+        "modifiedDate": {
+            "@type": "xsd:dateTime"
+        },
+        "musicalWorks": {
+            "@id": "musicalWork",
+            "@container": "@set"
+        },
+        "ownerAffiliation": {
+            "@type": "@id"
+        },
+        "outputs": {
+            "@id": "output",
+            "@container": "@set"
+        },
+        "publishedDate": {
+            "@type": "xsd:dateTime"
+        },
+        "nameType": {
+            "@type": "@vocab",
+            "@context": {
+                "@vocab": "https://nva.sikt.no/ontology/publication#"
+            }
+        },
+        "projects": {
+            "@id": "project",
+            "@container": "@set"
+        },
+        "fundings": {
+            "@id": "funding",
+            "@container": "@set"
+        },
+        "related": {
+            "@id": "related",
+            "@container": "@set"
+        },
+        "referencedBy": {
+            "@id": "referencedBy",
+            "@container": "@set"
+        },
+        "role": {
+            "@type": "@vocab",
+            "@context": {
+                "@vocab": "https://nva.sikt.no/ontology/publication#"
+            }
+        },
+        "source": {
+            "@type": "@id"
+        },
+        "status": {
+            "@type": "@vocab",
+            "@context": {
+                "@vocab": "https://nva.sikt.no/ontology/publication#"
+            }
+        },
+        "subjects": {
+            "@id": "subject",
+            "@type": "@id",
+            "@container": "@set"
+        },
+        "tags": {
+            "@id": "tag",
+            "@container": "@set"
+        },
+        "to": {
+            "@type": "xsd:dateTime"
+        },
+        "trackList": {
+            "@id": "trackList",
+            "@container": "@set"
+        },
+        "venues": {
+            "@id": "venue",
+            "@container": "@set"
+        }
+    },
+    "id": "https://api.test.nva.aws.unit.no/publication/018c86914d06-4419e8b0-2329-425d-821e-72b1eb669e0e"
 }
 ```

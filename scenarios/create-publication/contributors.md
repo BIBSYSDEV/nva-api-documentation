@@ -15,7 +15,7 @@ An identified contributor is recognized by having `identifier.id` populated with
   "type": "Contributor",
   "identity": {
     "type": "Identity",
-    "id": "https://api.sandbox.nva.aws.unit.no/cristin/person/538786",
+    "id": "https://api.test.nva.aws.unit.no/cristin/person/538786",
     "name": "Test, Test",
     "orcId": "http://orcid.org/0000-0001-5109-3700",
     "verificationStatus": "Verified|CannotBeEstablished|NotVerified",
@@ -27,7 +27,7 @@ An identified contributor is recognized by having `identifier.id` populated with
   },
   "affiliations": [{
     "type": "Organization",
-    "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+    "id": "https://api.test.nva.aws.unit.no/cristin/organization/185.18.2.0"
   }],
   "role": {
     "type": "Creator"
@@ -44,7 +44,7 @@ The affiliations of contributors should always refer to existing organizational 
 [
   {
     "type": "Organization",
-    "id": "https://api.sandbox.nva.aws.unit.no/cristin/organization/185.18.2.0"
+    "id": "https://api.test.nva.aws.unit.no/cristin/organization/185.18.2.0"
   }
 ]
 ```
