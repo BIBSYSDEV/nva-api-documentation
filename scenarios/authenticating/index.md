@@ -9,6 +9,13 @@ Authentication servers:
 * Production: nva-prod.auth.eu-west-1.amazoncognito.com
 
 ## Obtaining an access token
+```mermaid
+sequenceDiagram
+    Client->>AuthServer: POST /oauth2/token (clientId, clientSecret)
+    activate AuthServer
+    AuthServer->>Client: Token response
+    deactivate AuthServer
+```
 You can exchange your `clientId` and `clientSecret` for an access token using the following request
 using Basic Authorization with `clientId` as the username and `clientSecret` as the password:
 ```http request

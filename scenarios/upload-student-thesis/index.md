@@ -3,7 +3,15 @@
 ## Upload files
 See [file upload](../file-upload/index.md)
 
-## Describing the thesis (entity description)
+## Uploading metadata
+```mermaid
+sequenceDiagram
+    Client->>API: POST /publication (metadata, file identifier, Authorization: Bearer …)
+    activate API
+    API->>Client: Response (metadata)
+    deactivate API
+```
+### Describing the thesis (entity description)
 The metadata about the actually published work is contained within the `entityDescription` field. The important fields are:
 * `language`
 * `mainTitle`
@@ -122,7 +130,7 @@ The students that actually authored the thesis should be added with role `Creato
 ```
 See [Adding contributors](../create-publication/contributors.md) for more details on adding contributors.
 
-## Publication context
+### Publication context
 The publication context must indicate that this is a "Degree" context, the remaining fields are filled according to current practice at the institution. 
 
 **publisher**: Depending on the practice at the insitution, the publisher may be an institution, a faculty or department, otherwise the author.
@@ -195,12 +203,12 @@ Example with an unconfirmed series:
 }
 ```
 
-## Publication instance
+### Publication instance
 The publication instance must indicate the degree type, e.g. *DegreeBachelor*, *DegreeMaster*, *DegreePhd* or *DegreeLicentiate*.
 
-### Shared data for degrees
+#### Shared data for degrees
 
-#### Pages
+##### Pages
 Since all degrees are monographs, the page-type is "MonographPages".
 
 **introduction**: (the preface) is not included in the total number of pages, and is often indicated by use of Roman numerals.
@@ -221,7 +229,7 @@ Example:
 }
 ```
 
-#### SubmittedDate
+##### SubmittedDate
 
 The submitted date may be a year, a year-and-month or a year-month-day.
 
@@ -237,7 +245,7 @@ Example:
 }
 ```
 
-### Bachelor degree thesis
+#### Bachelor degree thesis
 ```json
 {
   "entityDescription": {
@@ -269,7 +277,7 @@ Example:
   }
 }
 ```
-### Master degree thesis
+#### Master degree thesis
 ```json
 {
   "entityDescription": {
@@ -301,7 +309,7 @@ Example:
   }
 }
 ```
-### PhD degree thesis
+#### PhD degree thesis
 ```json
 {
   "entityDescription": {
@@ -333,7 +341,7 @@ Example:
   }
 }
 ```
-### Licentiate degree thesis
+#### Licentiate degree thesis
 ```json
 {
   "entityDescription": {
@@ -366,9 +374,9 @@ Example:
 }
 ```
 
-## Associated artifacts and licences
+### Associated artifacts and licences
 
-### An administrative agreement
+#### An administrative agreement
 ```json
 {
   "type": "UnpublishableFile",
@@ -385,7 +393,7 @@ Example:
 }
 ```
 
-### A published file
+#### A published file
 ```json
 {
   "type": "PublishedFile",
@@ -403,7 +411,7 @@ Example:
 }
 ```
 
-### Supported licences
+#### Supported licences
 * https://creativecommons.org/licenses/by/4.0
 * https://creativecommons.org/licenses/by-nc/4.0
 * https://creativecommons.org/licenses/by-nc-nd/4.0
@@ -413,7 +421,7 @@ Example:
 * https://creativecommons.org/publicdomain/zero/1.0
 * http://rightsstatements.org/vocab/InC/1.0/
 
-# Create the NVA record for the thesis
+## Create the NVA record for the thesis
 ```http request
 POST /publication HTTP/1.1
 Host: api.test.nva.aws.unit.no

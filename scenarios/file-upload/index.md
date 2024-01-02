@@ -1,5 +1,27 @@
 # File upload in the NVA API
 Note that for large files, you will need to split the file in parts, and iterate over *Prepare part* and *Upload part* as described below.
+```mermaid
+sequenceDiagram
+    Client->>API: POST /upload/create (Authorization: Bearer …)
+    activate API
+    API->>Client: Response (uploadId, key)
+    deactivate API
+    loop for each part of X MB
+        Client->>API: POST /upload/prepare (uploadId, key, number, Authorization: Bearer …)
+        activate API
+        API->>Client: Response (url)
+        deactivate API
+        Client->>API: PUT url
+        activate API
+        API->>Client: Response (ETag)
+        deactivate API
+    end
+    Client->>API: POST /upload/complete  (uploadId, key, [part/ETag], Authorization: Bearer …)
+    activate API
+    API->>Client: Response (identifier)
+    deactivate API
+```
+
 ## Initiate file upload
 [Swagger documentation](https://swagger-ui.nva.unit.no/#/NVA%20S3%20Multipart%20Upload/post_upload_create)
 
