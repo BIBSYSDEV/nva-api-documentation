@@ -523,31 +523,13 @@ Authorization: Bearer ***
   "associatedArtifacts": [
     {
       "type": "PublishedFile",
-      "identifier": "49665499-8d8f-4b3c-9eef-28f7f0474715",
-      "name": "dev.nva:02.attachment 01.pdf",
+      "identifier": "59347ec1-57f8-4ab7-9bff-9a66ac9066af",
+      "name": "my-thesis.pdf",
       "mimeType": "application/pdf",
-      "license": "http://rightsstatements.org/vocab/InC/1.0/"
-    },
-    {
-      "type": "PublishedFile",
-      "identifier": "852575ec-2776-4fc5-8255-6e2a1416ff6e",
-      "name": "dev.nva:02.attachment 02.pdf",
-      "mimeType": "application/pdf",
-      "license": "http://rightsstatements.org/vocab/InC/1.0/"
-    },
-    {
-      "type": "PublishedFile",
-      "identifier": "73afb9ec-5f0e-45e7-bf12-716e57690d61",
-      "name": "dev.nva:02.attachment 03.pdf",
-      "mimeType": "application/pdf",
-      "license": "http://rightsstatements.org/vocab/InC/1.0/"
-    },
-    {
-      "type": "PublishedFile",
-      "identifier": "831baeba-67bc-4ef9-92ff-7a8252701677",
-      "name": "nva_dev:test_file02.pdf",
-      "mimeType": "application/pdf",
-      "license": "http://rightsstatements.org/vocab/InC/1.0/"
+      "license": "http://rightsstatements.org/vocab/InC/1.0/",
+      "administrativeAgreement": false,
+      "publisherAuthority": true,
+      "visibleForNonOwner": true
     }
   ]
 }
@@ -681,11 +663,7 @@ The response will then be something like this:
             "mimeType": "application/pdf",
             "license": "http://rightsstatements.org/vocab/InC/1.0/",
             "administrativeAgreement": false,
-            "publisherAuthority": false,
-            "rightsRetentionStrategy": {
-                "type": "NullRightsRetentionStrategy",
-                "followsPolicy": true
-            },
+            "publisherAuthority": true,
             "visibleForNonOwner": true
         }
     ],
