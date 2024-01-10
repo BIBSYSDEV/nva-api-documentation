@@ -7,7 +7,7 @@ All publications have one or more contributors. A contributor is a person (or a 
 in regard to the publication at hand. In addition, each contributor has a sequence number and a boolean flag indicating if it is a corresponding author.
 You should always strive to identify all the contributors. This has the benefit that the contributors would actually be credited for their contribution on their research profile in NVA automatically.
 
-To identify a contributor by `id`, you actually need to search for and find the `id` for the person by searching in the [Person API](https://swagger-ui-internal.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListPersons).
+To identify a contributor by `id`, you actually need to search for and find the `id` for the person by searching in the [Person API](https://swagger-ui.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListPersons).
 An identified contributor is recognized by having `identifier.id` populated with a valid URI.
 
 ```json
@@ -38,7 +38,7 @@ An identified contributor is recognized by having `identifier.id` populated with
 ```
 
 ## Affiliations
-The affiliations of contributors should always refer to existing organizational units found through the [Organization API](https://swagger-ui-internal.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListOrganizations).
+The affiliations of contributors should always refer to existing organizational units found through the [Organization API](https://swagger-ui.nva.unit.no/#/NVA%20Cristin%20Proxy%20API/ListOrganizations).
 
 ```json
 [

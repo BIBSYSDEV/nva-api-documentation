@@ -422,6 +422,7 @@ Example:
 * http://rightsstatements.org/vocab/InC/1.0/
 
 ## Create the NVA record for the thesis
+[Swagger documentation](https://swagger-ui.nva.unit.no/#/NVA%20Publication%20API/post_publication_)
 ```http request
 POST /publication HTTP/1.1
 Host: api.test.nva.aws.unit.no
