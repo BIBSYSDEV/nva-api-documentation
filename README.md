@@ -1,12 +1,17 @@
 # nva-api-documentation
 API documentation for NVA.
 
-API Servers:
+## API Servers
 * Test: [https://api.test.nva.aws.unit.no](https://api.test.nva.aws.unit.no)
 * Production: [https://api.nva.unit.no](https://api.nva.unit.no)
 
+## API documentation
+* Test: [https://swagger-ui.test.nva.aws.unit.no/#/](https://swagger-ui.test.nva.aws.unit.no/#/)
+* Production: [https://swagger-ui.nva.unit.no/#/](https://swagger-ui.nva.unit.no/#/)
+
+
 ## Versioning
-We have a principles when it comes to versioning that all users of the API need to be aware of:
+We have a few principles when it comes to versioning that all users of the API need to be aware of:
 * We will never change or delete existing fields.
 * We can add new fields without bumping the version.
 * Clients must make sure they can handle "unknown" fields from the server responses.
