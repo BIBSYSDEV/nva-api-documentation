@@ -4,6 +4,9 @@ access the NVA API on behalf of your institution. When this is established, you 
 `clientId` and `clientSecret` in return. This will be used to obtain an access token that is used
 when accessing the API.
 
+Most read endpoints are open. However, we encourage clients to request follow the procedure above to get access tokens.
+Requests without a access token may be subject to throttling if the server is under high load.
+
 Authentication servers:
 * Test: nva-test.auth.eu-west-1.amazoncognito.com
 * Production: nva-prod.auth.eu-west-1.amazoncognito.com
