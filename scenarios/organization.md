@@ -151,3 +151,11 @@ Example response
     ]
 }
 ```
+
+## Persons affiliated with an organization
+```http request
+GET /cristin/organization/20754.0.0.0/persons HTTP/1.1
+Host: api.test.nva.aws.unit.no
+Authorization: Bearer ***
+
+```
