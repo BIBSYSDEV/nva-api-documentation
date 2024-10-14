@@ -25,9 +25,10 @@ using Basic Authorization with `clientId` as the username and `clientSecret` as 
 POST /oauth2/token HTTP/1.1
 Host: <authentication server>
 Content-Type: application/x-www-form-urlencoded
-Authorization: Basic <base64urlencode(clientId + ':' + clientSecret)>
 
 grant_type=client_credentials
+client_id=<sett inn clientId her>
+client_secret=<sett inn clientSecret her>
 ```
 
 In return, you will get a response like this:
