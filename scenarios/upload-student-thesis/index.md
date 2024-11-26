@@ -376,33 +376,26 @@ Example:
 
 ### Associated artifacts and licences
 
-#### An administrative agreement
+#### An internal file uploaded for archival purposes only
 ```json
 {
-  "type": "UnpublishableFile",
+  "type": "InternalFile",
   "identifier": "8dd58b7e-5a90-4cde-853b-adc3a4681abf",
-  "name":"thesis.pdf",
+  "name":"some-archived-file.pdf",
   "mimeType": "application/pdf",
-  "size":"12356665",
-  "license": "http://rightsstatements.org/vocab/InC/1.0/",
-  "administrativeAgreement": true,
-  "embargoDate": "2023-01-01T00:00:00Z",
-  "rightsRetentionStrategy": {
-    "type": "NullRightsRetentionStrategy"
-  }
+  "size":"12356665"
 }
 ```
 
-#### A published file
+#### A public file that everyone can see and access
 ```json
 {
-  "type": "PublishedFile",
+  "type": "OpenFile",
   "identifier": "8dd58b7e-5a90-4cde-853b-adc3a4681abf",
   "name":"thesis.pdf",
   "mimeType": "application/pdf",
   "size":"12356665",
   "license": "http://rightsstatements.org/vocab/InC/1.0/",
-  "administrativeAgreement": false,
   "embargoDate": "2023-01-01T00:00:00Z",
   "rightsRetentionStrategy": {
     "type": "NullRightsRetentionStrategy"
@@ -522,14 +515,12 @@ Authorization: Bearer ***
   ],
   "associatedArtifacts": [
     {
-      "type": "PublishedFile",
+      "type": "OpenFile",
       "identifier": "59347ec1-57f8-4ab7-9bff-9a66ac9066af",
       "name": "my-thesis.pdf",
       "mimeType": "application/pdf",
       "license": "http://rightsstatements.org/vocab/InC/1.0/",
-      "administrativeAgreement": false,
-      "publisherAuthority": true,
-      "visibleForNonOwner": true
+      "publisherAuthority": true
     }
   ]
 }
@@ -657,14 +648,12 @@ The response will then be something like this:
     "subjects": [],
     "associatedArtifacts": [
         {
-            "type": "PublishedFile",
+            "type": "OpenFile",
             "identifier": "59347ec1-57f8-4ab7-9bff-9a66ac9066af",
             "name": "my-thesis.pdf",
             "mimeType": "application/pdf",
             "license": "http://rightsstatements.org/vocab/InC/1.0/",
-            "administrativeAgreement": false,
-            "publisherAuthority": true,
-            "visibleForNonOwner": true
+            "publisherAuthority": true
         }
     ],
     "additionalIdentifiers": [
