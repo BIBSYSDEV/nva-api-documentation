@@ -1,0 +1,99 @@
+workspace "Nasjonalt Vitenarkiv C4" "Description" {
+
+    model {
+        nva = softwareSystem "NVA"
+        admin = person "Institusjonsadministrator"
+        anonym = person "Anonym bruker: ikke innlogget"
+        bruker = person "Bruker: innlogget; ingen kunde"
+        doikurator = person "DOI kurator"
+        filkurator = person "Fil kurator"
+        supportkurator = person "Supportkurator"
+        registrator = person "Registrator"
+        redaktor = person "Redaktør"
+        nvaadmin = person "Applikasjonsadministrator"
+        internalimportkurator = person "Intern import kurator"
+        studentoppgavekurator = person "Studentoppgavekurator"
+        studentoppgaveembargokurator = person "Studentoppgave embargo kurator"
+        nvikurator = person "NVI kurator"
+        apibruker = softwareSystem "API user"
+        dap = softwareSystem "Analyseplattformen"
+        oria = softwareSystem "ORIA"
+        eurocris = softwareSystem "EuroCris"
+        feide = softwareSystem "Feide"
+        dataporten = softwareSystem "Dataporten"
+        orcid = softwareSystem "ORCID"
+        cristin = softwareSystem "CRIStin"
+        crossref = softwareSystem "CrossRef"
+        scopus = softwareSystem "SCOPUS"
+        nfr = softwareSystem "Norges Forskningsråd finansiering API"
+        handle = softwareSystem "Hdl.NET"
+        kanalregister = softwareSystem "HKDIR DBH kanalregister"
+        datacite = softwareSystem "DataCite"
+        rek = softwareSystem "Regional Etisk Komitè"
+        ctis = softwareSystem "CTIS"
+        google = softwareSystem "Google Search"
+        googleScholar = softwareSystem "Google Scholar"
+        
+        google -> nva "skraper data fra[HTTP/JSON]" 
+        googleScholar -> nva "skraper data fra[HTTP/HTML]" 
+        ctis -> nva "implementeres senere; synker helseprosjekter med[HTTP/JSON]" 
+        rek -> cristin "synker helseprosjekter med[HTTP/JSON]"
+        nva -> datacite "leser og skriver publiseringsmetadata til/fra, oppretter DOI i[HTTP/JSON]"
+        nva -> kanalregister "leser og skriver til/fra[HTTP/JSON]"
+        nva -> handle "henter persistente identifikatorer fra[HTTP]"
+        nva -> nfr "henter finansieringsinformasjon fra[HTTP/JSON]"
+        nva -> feide "bruker til innlogging[HTTP/OAUTH2]"
+        nva -> dataporten "bruker til innlogging[HTTP/OAUTH2]"
+        nva -> cristin "henter tilknytninger om person, organisasjon, prosjekt, biobanker, finansiering fra[HTTP/JSON]"
+        nva -> orcid "henter brukerpolett fra[HTTP/JSON]"
+        nva -> crossref "henter publikasjonsmetadata fra[HTTP/JSON]"
+        scopus -> nva "sender publiseringsmetadata til[SMTP]"
+        filkurator -> nva "som registrator, redigere utkast og publiserte resultater på vegne av bruker/publisere filer i"
+        redaktor -> nva "som registrator, redigere prosjekter i, gi kurator roller i, setter ansvarsområder for kuratorer i, setter publiseringsflyt i, sette katagorier som tillater filer i, sette hvilke kontrollerte vokabularer som brukes i, avpublisere og slette resulteter i"
+        admin -> nva "som registrator, administrere person og bruker i"
+        nvaadmin -> nva "som registrator, administrere kunderelasjoner i, starte rapporteringsperioder i"
+        anonym -> nva "søker/leser/laster ned innhold fra"
+        bruker -> nva "kan logge inn i/oppdatere profil i"
+        supportkurator -> nva "som registrator, svare og stenge supportforespørsler i/redigere utkast og publiserte resultater på vegne av bruker i"
+        studentoppgavekurator -> nva "som filkurator/registrere og publisere studentoppgaver i"
+        doikurator -> nva "som registrator, godkjenne DOI forespørsler i"
+        internalimportkurator -> nva "som registrator, importerer resultater fra eksterne kilder inn i"
+        studentoppgaveembargokurator -> nva "ser studentoppgaver med embargo i, setter embargo på studentoppgaver i"
+        nvikurator -> NVA "som registrator, godkjenne NVI kandidater i, samarbeide med andre NVI kurator hos andre institusjoner via meldinger i"
+        apibruker -> nva "leser data fra["HTTP/JSON"]"
+        dap -> nva "leser data fra[CSV filer]"
+        oria -> nva "leser data fra[HTTP/OAI-PMH XML]"
+        eurocris -> nva "leser data fra[HTTP/OAI-PMH XML]"
+    }
+
+    views {
+        systemContext nva "Diagram1" {
+            include *
+            autolayout
+        }
+
+        styles {
+            element "Element" {
+                color #ffffff
+            }
+            element "Person" {
+                background #048c04
+                shape person
+            }
+            element "Software System" {
+                background #047804
+            }
+            element "Container" {
+                background #55aa55
+            }
+            element "Database" {
+                shape cylinder
+            }
+        }
+    }
+
+    configuration {
+        scope softwaresystem
+    }
+
+}
