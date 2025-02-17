@@ -153,9 +153,35 @@ Example response
 ```
 
 ## Persons affiliated with an organization
+The endpoint supports paging by using the following query parameters:
+* page, the page number; starts at page 1
+* results, number of results per page; defaults to 5
+
+
 ```http request
 GET /cristin/organization/20754.0.0.0/persons HTTP/1.1
 Host: api.test.nva.aws.unit.no
 Authorization: Bearer ***
 
 ```
+Example response
+```json
+{
+  "id": "https://api.nva.unit.no/cristin/organization/260.0.0.0/persons?page=1&results=5",
+  "size": 155,
+  "searchString": "page=1&results=5",
+  "processingTime": 991,
+  "firstRecord": 1,
+  "nextResults": "https://api.nva.unit.no/cristin/organization/260.0.0.0/persons?page=2&results=5",
+  "previousResults": null,
+  "hits": [
+    {
+      "id": "https://api.nva.unit.no/cristin/person/dddddd",
+      ...
+    },
+    ...
+  ]
+}
+```
+
+Note: if you further want to look up results where persons hare contributed, check [this](./publication.md#by-a-specific-contributor).
