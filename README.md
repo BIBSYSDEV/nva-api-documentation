@@ -1,6 +1,12 @@
 # nva-api-documentation
 API documentation for NVA.
 
+## System documentation
+
+We provide standardized [C4 diagrams](https://c4model.com/) — for those who may be interested — in the `system` directory. To generate the diagrams, use the [C4-Structurizr](https://structurizr.com/dsl) or your favourite tool. At the present time, C4 diagrams are available for the System context only as this is relevant to most users. If a Container context is required, create an issue in this repository.
+
+Please note, at the present time, there is no intention to make Component or Code context diagrams available as it is possible to generate sufficient diagrams from code (SAM-IaC and the code itself).
+
 ## API Servers
 * Test: [https://api.test.nva.aws.unit.no](https://api.test.nva.aws.unit.no)
 * Production: [https://api.nva.unit.no](https://api.nva.unit.no)
