@@ -2,12 +2,12 @@
 Note that for large files, you will need to split the file in parts, and iterate over *Prepare part* and *Upload part* as described below.
 ```mermaid
 sequenceDiagram
-    Client->>API: POST /upload/create (Authorization: Bearer …)
+    Client->>API: POST /publication/{publicationIdentifier}/file-upload/create (Authorization: Bearer …)
     activate API
     API->>Client: Response (uploadId, key)
     deactivate API
     loop for each part of X MB
-        Client->>API: POST /upload/prepare (uploadId, key, number, Authorization: Bearer …)
+        Client->>API: POST /publication/{publicationIdentifier}/file-upload/prepare (uploadId, key, number, Authorization: Bearer …)
         activate API
         API->>Client: Response (url)
         deactivate API
@@ -16,17 +16,17 @@ sequenceDiagram
         API->>Client: Response (ETag)
         deactivate API
     end
-    Client->>API: POST /upload/complete  (uploadId, key, [part/ETag], Authorization: Bearer …)
+    Client->>API: POST /publication/{publicationIdentifier}/file-upload/complete  (uploadId, key, [part/ETag], Authorization: Bearer …)
     activate API
     API->>Client: Response (identifier)
     deactivate API
 ```
 
 ## Initiate file upload
-[Swagger documentation](https://swagger-ui.nva.unit.no/#/NVA%20S3%20Multipart%20Upload/post_upload_create)
+[Swagger documentation](https://swagger-ui.nva.unit.no/#/publication/{publicationIdentifier}/file-upload/create)
 
 ```http request
-POST /upload/create HTTP/1.1
+POST /publication/{publicationIdentifier}/file-upload/create HTTP/1.1
 Host: api.test.nva.aws.unit.no
 Content-Type: application/json
 Authorization: Bearer ***
@@ -48,9 +48,10 @@ The response will look like this:
 ```
 
 ## Prepare part(s)
-[Swagger documentation](https://swagger-ui.nva.unit.no/#/NVA%20S3%20Multipart%20Upload/post_upload_prepare)
+[Swagger documentation](https://swagger-ui.nva.unit.no/#/publication/{publicationIdentifier}/file-upload/prepare)
+
 ```http request
-POST /upload/prepare HTTP/1.1
+POST /publication/{publicationIdentifier}/file-upload/prepare HTTP/1.1
 Host: api.test.nva.aws.unit.no
 Content-Type: application/json
 Authorization: Bearer ***
@@ -81,9 +82,10 @@ Content-Type: application/pdf
 You will get 200 OK with an empty body.
 
 ## Complete upload
-[Swagger documentation](https://swagger-ui.nva.unit.no/#/NVA%20S3%20Multipart%20Upload/post_upload_complete)
+[Swagger documentation](https://swagger-ui.nva.unit.no/#/publication/{publicationIdentifier}/file-upload/complete)
+
 ```http request
-POST /upload/complete HTTP/1.1
+POST /publication/{publicationIdentifier}/file-upload/complete HTTP/1.1
 Host: api.test.nva.aws.unit.no
 Content-Type: application/json
 Authorization: Bearer ***
