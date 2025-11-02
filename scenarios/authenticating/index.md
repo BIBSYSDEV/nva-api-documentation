@@ -8,8 +8,8 @@ Most read endpoints are open. However, we encourage clients to request follow th
 Requests without a access token may be subject to throttling if the server is under high load.
 
 Authentication servers:
-* Test: nva-test.auth.eu-west-1.amazoncognito.com
-* Production: nva-prod.auth.eu-west-1.amazoncognito.com
+* Test: nva-test-ext.auth.eu-west-1.amazoncognito.com
+* Production: nva-prod-ext.auth.eu-west-1.amazoncognito.com
 
 ## Obtaining an access token
 ```mermaid
