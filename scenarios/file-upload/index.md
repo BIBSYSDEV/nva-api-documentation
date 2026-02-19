@@ -16,7 +16,7 @@ sequenceDiagram
         API->>Client: Response (ETag)
         deactivate API
     end
-    Client->>API: POST /publication/{publicationIdentifier}/file-upload/complete  (uploadId, key, [part/ETag], Authorization: Bearer …)
+    Client->>API: POST /publication/{publicationIdentifier}/file-upload/complete  (uploadId, key, [part/ETag], type, fileType, licence, publisherVersion, embargoDate, Authorization: Bearer …)
     activate API
     API->>Client: Response (identifier)
     deactivate API
@@ -34,9 +34,7 @@ Authorization: Bearer ***
 {
     "filename": "my-thesis.pdf",
     "size": 2812876,
-    "lastmodified": 1698846480,
     "mimetype": "application/pdf",
-    "md5hash": "3b1dc6d3b5365ebe8db5bd6c3861d8cd"
 }
 ```
 The response will look like this:
@@ -84,6 +82,8 @@ You will get 200 OK with an empty body.
 ## Complete upload
 [Swagger documentation](https://swagger-ui.nva.unit.no/#/publication/{publicationIdentifier}/file-upload/complete)
 
+[Supported licences](https://github.com/BIBSYSDEV/nva-api-documentation/blob/main/scenarios/upload-student-thesis/index.md#supported-licences)
+
 ```http request
 POST /publication/{publicationIdentifier}/file-upload/complete HTTP/1.1
 Host: api.test.nva.aws.unit.no
@@ -97,17 +97,22 @@ Authorization: Bearer ***
     }],
     "uploadId": "<from response from create upload>",
     "key": "<from response from create upload>"
+    "type": "ExternalCompleteUpload",
+    "fileType": "OpenFile", // Or InternalFile
+    "license": "", // Creative commons license uri
+    "publisherVersion": "PublishedVersion", // Or AcceptedVersion
+    "embargoDate": [] // Instant
 }
 ```
 
 The response will look like this:
 ```json
 {
-    "location": "<location>",
-    "identifier": "<identifier>",
-    "fileName": "my-thesis.pdf",
-    "mimeType": "application/pdf",
-    "size": 2812876
+  "type": "OpenFile",
+  "identifier": "<identifier>",
+  "name": "my-thesis.pdf",
+  "mimeType": "application/pdf",
+  "size": "2812876",
+  ...
 }
 ```
-The identifier can be used to reference the uploaded file from a publication in `associatedArtifacts` when uploading the metadata [here](https://swagger-ui.nva.unit.no/#/NVA%20Publication%20API/post_publication_)
