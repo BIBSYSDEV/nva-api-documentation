@@ -34,9 +34,7 @@ Authorization: Bearer ***
 {
     "filename": "my-thesis.pdf",
     "size": 2812876,
-    "lastmodified": 1698846480,
     "mimetype": "application/pdf",
-    "md5hash": "3b1dc6d3b5365ebe8db5bd6c3861d8cd"
 }
 ```
 The response will look like this:
