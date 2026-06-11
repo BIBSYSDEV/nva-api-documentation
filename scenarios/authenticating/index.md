@@ -41,7 +41,7 @@ In return, you will get a response like this:
 ```
 
 The access token above is valid for 900 seconds, after which you will have to get a new token to
-keep accessing the API.
+keep accessing the API. You MUST cache this token and use it until it expires, DO NOT create a new token for each new request.
 
 Using this token in subsequent requests to the API is done by providing the following request
 header:
