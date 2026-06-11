@@ -1,12 +1,6 @@
 # nva-api-documentation
 API documentation for NVA.
 
-## System documentation
-
-We provide standardized [C4 diagrams](https://c4model.com/) — for those who may be interested — in the `system` directory. To generate the diagrams, use the [C4-Structurizr](https://structurizr.com/dsl) or your favourite tool. At the present time, C4 diagrams are available for the System context only as this is relevant to most users. If a Container context is required, create an issue in this repository.
-
-Please note, at the present time, there is no intention to make Component or Code context diagrams available as it is possible to generate sufficient diagrams from code (SAM-IaC and the code itself).
-
 ## API Servers
 * Test: [https://api.test.nva.aws.unit.no](https://api.test.nva.aws.unit.no)
 * Production: [https://api.nva.unit.no](https://api.nva.unit.no)
@@ -15,6 +9,9 @@ Please note, at the present time, there is no intention to make Component or Cod
 * Test: [https://swagger-ui.test.nva.aws.unit.no/#/](https://swagger-ui.test.nva.aws.unit.no/#/)
 * Production: [https://swagger-ui.nva.unit.no/#/](https://swagger-ui.nva.unit.no/#/)
 
+## General advice
+* The data format used across NVA platform is [JSON-LD](https://www.w3.org/TR/json-ld11/)
+* When interacting with APIs, please identify yourself with a [user agent header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) including e-mail address where we can contact you.
 
 ## Versioning
 We have a few principles when it comes to versioning that all users of the API need to be aware of:
@@ -37,3 +34,10 @@ We have a few principles when it comes to versioning that all users of the API n
 * [Publication search](scenarios/publication.md)
 * [File upload](scenarios/file-upload/index.md)
 * [Uploading student degree thesis](scenarios/upload-student-thesis/index.md)
+* [Approvals](scenarios/approvals)
+
+## System documentation
+
+We provide standardized [C4 diagrams](https://c4model.com/) — for those who may be interested — in the `system` directory. To generate the diagrams, use the [C4-Structurizr](https://structurizr.com/dsl) or your favourite tool. At the present time, C4 diagrams are available for the System context only as this is relevant to most users. If a Container context is required, create an issue in this repository.
+
+Please note, at the present time, there is no intention to make Component or Code context diagrams available as it is possible to generate sufficient diagrams from code (SAM-IaC and the code itself).
