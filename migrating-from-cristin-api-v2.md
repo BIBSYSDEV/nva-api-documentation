@@ -127,7 +127,7 @@ List the results (publications) connected to a funding.
 
 **NVA API:** There is no direct equivalent. Search for resources instead, either with the funding source code and identifier, `GET /search/resources?funding={funding-source-code:identifier}`, or with the funding identifier, `GET /search/resources?funding_identifier={identifier}`.
 
-> **Note:** The NVA API endpoints are case sensitive.
+> **Note:** The NVA API endpoint is case sensitive.
 
 **Example**
 
